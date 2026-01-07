@@ -2,6 +2,10 @@
 import '../styles/global.css';
 // Component Imports
 import Button from '../components/Button.astro';
+import AboutMine from '../components/AboutMine';
+import ContactForm from '../components/ContactForm';
+import HeroSection from '../components/HeroSection'
+import Header from '../components/Header';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -13,13 +17,37 @@ import Button from '../components/Button.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
+		<title>Wholesale Amazonite Supplier - Direct Peruvian Mine Export</title>
+		<meta
+          name="description"
+          content="Source high-quality Peruvian Amazonite in bulk. Direct from mine owner, ethical sourcing, and global logistics. Request a quote for your wholesale needs."
+        />
+        <meta
+          name="keywords"
+          content="amazonite, wholesale amazonite, peruvian amazonite, amazonite supplier, bulk amazonite, amazonite rough, amazonite export"
+        />
+        <meta property="og:title" content="Premium Peruvian Amazonite - Direct from Mine to Global Markets" />
+        <meta
+          property="og:description"
+          content="We own the source. High-quality Amazonite rough and semi-polished stones, ethically mined in Peru and exported worldwide."
+        />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://peruvian-amazonite.com" />
 	</head>
 
 	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+		<div class="min-h-screen">
+			<Header/>
+			<main>
+          		<HeroSection />
+          		<!-- <TrustBar /> -->
+          		<!-- <ProductGrading /> -->
+          		<!-- <WhyPartner /> -->
+          		<AboutMine />
+          		<ContactForm />
+        	</main>
+			<!-- <Footer /> -->
+        	<!-- <WhatsAppButton /> -->
 		</div>
 	</body>
 </html>
