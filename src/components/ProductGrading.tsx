@@ -1,13 +1,13 @@
 import { Check, Star, Sparkles, Package } from "lucide-react";
-import gradeAAA from "@/assets/grade-aaa.jpg";
-import gradeAA from "@/assets/grade-aa.jpg";
-import gradeA from "@/assets/grade-a.jpg";
+import gradeAAA from "../assets/grade-aaa.jpg";
+import gradeAA from "../assets/grade-aa.jpg";
+import gradeA from "../assets/grade-a.jpg";
 
 interface GradeCardProps {
   grade: string;
   title: string;
   description: string;
-  image: string;
+  image: any;
   features: string[];
   highlighted?: boolean;
   icon: React.ReactNode;
@@ -31,7 +31,7 @@ const GradeCard = ({ grade, title, description, image, features, highlighted, ic
     {/* Image */}
     <div className="relative h-64 overflow-hidden">
       <img
-        src={image}
+        src={image.src}
         alt={`${grade} Amazonite`}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />

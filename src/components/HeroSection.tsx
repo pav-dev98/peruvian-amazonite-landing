@@ -50,16 +50,16 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
-              variant="ghost" 
-              size="icon-lg" 
+              variant="hero" 
+              size="xl" 
               onClick={scrollToContact}
               className="animate-pulse-glow"
             >
               Get a Wholesale Quote
             </Button>
             <Button 
-              variant="ghost" 
-              size="icon-lg"
+              variant="heroOutline" 
+              size="xl"
               onClick={scrollToGrades}
             >
               View Current Stock

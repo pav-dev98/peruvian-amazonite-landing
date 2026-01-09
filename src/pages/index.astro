@@ -1,11 +1,15 @@
 ---
 import '../styles/global.css';
 // Component Imports
-import Button from '../components/Button.astro';
 import AboutMine from '../components/AboutMine';
 import ContactForm from '../components/ContactForm';
 import HeroSection from '../components/HeroSection'
 import Header from '../components/Header';
+import TrustBar from '../components/TrustBar';
+import ProductGrading from '../components/ProductGrading';
+import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import WhyPartner from '@/components/WhyPartner';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -37,17 +41,17 @@ import Header from '../components/Header';
 
 	<body>
 		<div class="min-h-screen">
-			<Header/>
+			<Header client:load/>
 			<main>
           		<HeroSection />
-          		<!-- <TrustBar /> -->
-          		<!-- <ProductGrading /> -->
-          		<!-- <WhyPartner /> -->
+          		<TrustBar />
+          		<ProductGrading />
+          		<WhyPartner />
           		<AboutMine />
-          		<ContactForm />
+          		<ContactForm client:load/>
         	</main>
-			<!-- <Footer /> -->
-        	<!-- <WhatsAppButton /> -->
+			<Footer />
+        	<WhatsAppButton />
 		</div>
 	</body>
 </html>
