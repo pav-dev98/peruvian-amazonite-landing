@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { Mountain, Menu, X } from "lucide-react";
+import LogoIcon from './LogoIcon';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,28 +30,27 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-card/95 backdrop-blur-md shadow-soft border-b border-border"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
-              isScrolled ? "bg-primary" : "bg-primary-foreground/20"
-            }`}>
-              <Mountain className={`w-5 h-5 transition-colors ${
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${isScrolled ? "bg-primary" : "bg-primary-foreground/20"
+              }`}>
+              {/* <Mountain className={`w-5 h-5 transition-colors ${
                 isScrolled ? "text-primary-foreground" : "text-primary-foreground"
-              }`} />
+              }`} /> */}
+              {/* <img src={MiIcono.src} alt="Mi icono" className="w-7 h-7"/> */}
+              <LogoIcon className="w-8 h-8 text-white" />
             </div>
             <div>
-              <span className={`font-serif font-bold text-lg transition-colors ${
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              }`}>
-                Peruvian Amazonite
+              <span className={`font-serif font-bold text-lg transition-colors ${isScrolled ? "text-foreground" : "text-primary-foreground"
+                }`}>
+                Peruvian Amazonite Co.
               </span>
             </div>
           </a>
@@ -61,9 +61,8 @@ const Header = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`font-medium transition-colors hover:text-primary ${
-                  isScrolled ? "text-foreground/80" : "text-primary-foreground/80 hover:text-primary-foreground"
-                }`}
+                className={`font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground/80" : "text-primary-foreground/80 hover:text-primary-foreground"
+                  }`}
               >
                 {link.label}
               </button>

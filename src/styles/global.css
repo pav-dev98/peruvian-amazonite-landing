@@ -1,24 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- Fuentes --- */
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui;
-  --font-serif: "Playfair Display", serif;
+  /* --- 1. CONFIGURACIÓN DEL CONTAINER (v4) --- */
+  --container-center: true;
+  --container-padding: 1rem;
+  --container-padding-md: 2rem;
+  --container-padding-lg: 4rem;
 
-  /* --- Colores Personalizados (Mapeo a Variables CSS) --- */
-  --color-amazonite: hsl(var(--amazonite));
-  --color-amazonite-dark: hsl(var(--amazonite-dark));
-  --color-amazonite-light: hsl(var(--amazonite-light));
-  
-  --color-gold: hsl(var(--gold));
-  --color-gold-light: hsl(var(--gold-light));
-  
-  --color-slate-dark: hsl(var(--slate-dark));
-  --color-cream: hsl(var(--cream));
-
-  /* --- Colores Base de Shadcn --- */
+  /* --- 2. REGISTRO DE COLORES (Esto arregla el bg-card/95) --- */
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
@@ -32,19 +27,23 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
+  --color-slate-dark: hsl(var(--slate-dark));
 
-  /* --- Animaciones y Keyframes --- */
+  /* Colores de marca */
+  --color-amazonite: hsl(var(--amazonite));
+  --color-gold: hsl(var(--gold));
+
+  /* --- 3. FUENTES --- */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+  --font-serif: "Playfair Display", serif;
+
+  /* --- 4. ANIMACIONES --- */
   --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
 
   @keyframes accordion-down {
     from { height: 0; }
     to { height: var(--radix-accordion-content-height); }
-  }
-  @keyframes accordion-up {
-    from { height: var(--radix-accordion-content-height); }
-    to { height: 0; }
   }
   @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 0 20px hsl(175 65% 45% / 0.4); }
@@ -52,281 +51,58 @@
   }
 }
 
-/* --- Capa Base con los valores HSL reales de Lovable --- */
+/* --- CAPA BASE CON TUS VALORES --- */
 @layer base {
   :root {
-    /* Copia estos valores exactos de tu archivo original 'index.css' de Lovable */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    /* ... añade el resto de variables que shadcn puso en tu Lovable ... */
-    
-    /* Variables de tu marca */
-    --amazonite: 175 65% 45%;
-    --amazonite-dark: 175 65% 35%;
-    --amazonite-light: 175 65% 55%;
-    --gold: 45 100% 50%;
-    --gold-light: 45 100% 70%;
-    --slate-dark: 210 40% 15%;
-    --cream: 45 50% 95%;
-    
-    --radius: 0.5rem;
-  }
-  
-  .dark {
-    /* Aquí irían tus variables para modo oscuro si las tienes */
-  }
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-@layer base {
-  :root {
-    /* Amazonite-inspired color palette */
     --background: 180 20% 98%;
     --foreground: 200 25% 15%;
-
     --card: 0 0% 100%;
     --card-foreground: 200 25% 15%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 200 25% 15%;
-
-    /* Primary: Amazonite turquoise-teal */
     --primary: 175 65% 35%;
     --primary-foreground: 0 0% 100%;
-
-    /* Secondary: Soft mint */
     --secondary: 168 30% 92%;
     --secondary-foreground: 175 50% 25%;
-
-    /* Muted: Light gray-green */
     --muted: 170 15% 94%;
     --muted-foreground: 200 15% 45%;
-
-    /* Accent: Gold/Bronze for luxury */
     --accent: 38 70% 50%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 170 20% 88%;
     --input: 170 20% 88%;
     --ring: 175 65% 35%;
-
     --radius: 0.75rem;
 
-    /* Custom tokens */
     --amazonite: 175 65% 45%;
-    --amazonite-dark: 175 70% 30%;
-    --amazonite-light: 170 50% 85%;
     --gold: 38 70% 50%;
-    --gold-light: 40 60% 70%;
+
     --slate-dark: 200 25% 12%;
-    --cream: 40 30% 96%;
-
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(175 70% 25%) 0%, hsl(180 60% 35%) 50%, hsl(170 55% 40%) 100%);
-    --gradient-amazonite: linear-gradient(180deg, hsl(175 65% 45%) 0%, hsl(180 70% 35%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 70% 50%) 0%, hsl(45 80% 60%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(170 20% 97%) 100%);
-
-    /* Shadows */
+    
+    /* Shadows y Gradientes */
     --shadow-soft: 0 4px 20px -4px hsl(175 50% 30% / 0.15);
-    --shadow-card: 0 8px 30px -8px hsl(175 50% 30% / 0.12);
-    --shadow-elevated: 0 20px 50px -15px hsl(175 50% 20% / 0.2);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --gradient-amazonite: linear-gradient(180deg, hsl(175 65% 45%) 0%, hsl(180 70% 35%) 100%);
   }
 
   .dark {
     --background: 200 25% 8%;
     --foreground: 170 20% 95%;
-
     --card: 200 25% 12%;
     --card-foreground: 170 20% 95%;
-
-    --popover: 200 25% 12%;
-    --popover-foreground: 170 20% 95%;
-
-    --primary: 175 60% 50%;
-    --primary-foreground: 200 25% 8%;
-
-    --secondary: 175 30% 18%;
-    --secondary-foreground: 170 20% 90%;
-
-    --muted: 200 20% 18%;
-    --muted-foreground: 170 15% 60%;
-
-    --accent: 38 70% 55%;
-    --accent-foreground: 200 25% 8%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 200 20% 20%;
-    --input: 200 20% 20%;
-    --ring: 175 60% 50%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
+  * { @apply border-border; }
+  body { 
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-  }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
 }
 
 @layer components {
-  .text-gradient-amazonite {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-amazonite);
-  }
-
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-gold);
-  }
-
-  .bg-gradient-hero {
-    background: var(--gradient-hero);
-  }
-
-  .bg-gradient-card {
-    background: var(--gradient-card);
-  }
-
-  .shadow-soft {
-    box-shadow: var(--shadow-soft);
-  }
-
-  .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  .shadow-elevated {
-    box-shadow: var(--shadow-elevated);
-  }
-
   .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
-  }
-
-  .mineral-texture {
-    background-image: 
-      radial-gradient(ellipse at 20% 30%, hsl(175 50% 80% / 0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, hsl(170 40% 85% / 0.2) 0%, transparent 50%);
+    /* Aquí ya funcionará el bg-card/80 porque lo registramos arriba */
+    @apply bg-card/80 backdrop-blur-md border border-white/20;
   }
 }
-
-@layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-shimmer {
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  .animate-fade-up {
-    animation: fadeUp 0.8s ease-out forwards;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-
-  @keyframes shimmer {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
