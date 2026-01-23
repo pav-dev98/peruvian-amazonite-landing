@@ -24,6 +24,7 @@ import {
 import { toast } from "sonner"
 import { Send, Phone, Mail, Clock } from "lucide-react";
 import CardQuote from "./CardQuote";
+import type { CardQuoteProps } from "./CardQuote";
 
 const countries = [
   "Afghanistan", "Albania", "Algeria", "Argentina", "Australia", "Austria",
@@ -58,24 +59,24 @@ const intendedUses = [
   "Other"
 ];
 
-const quotes = [
+const quotes: Array<CardQuoteProps> = [
   {
     title: "Email Us",
     description: "sales@peruvian-amazonite.com",
     icon: Mail,
-    type: "primary"
+    variant: "primary"
   },
   {
     title: "Call Us",
     description: "+51 999 888 777",
     icon: Phone,
-    type: "primary"
+    variant: "primary"
   },
   {
     title: "Response Time",
     description: "Within 24 business hours",
     icon: Clock,
-    type: "accent"
+    variant: "accent"
   }
 ]
 
@@ -146,7 +147,7 @@ const ContactForm = () => {
             {/* Contact Info Cards */}
             <div className="space-y-4">
               {quotes.map((quote,index)=>{
-                return (<CardQuote key={index} title={quote.title} description={quote.description} icon={quote.icon} type={quote.type} />)
+                return (<CardQuote key={index} title={quote.title} description={quote.description} icon={quote.icon} variant={quote.variant} />)
               })}
             </div>
           </div>
