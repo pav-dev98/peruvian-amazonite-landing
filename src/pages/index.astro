@@ -10,6 +10,8 @@ import ProductGrading from '../components/ProductGrading';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import WhyPartner from '@/components/WhyPartner';
+import { Toaster } from '@/components/ui/sonner';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -40,6 +42,8 @@ import WhyPartner from '@/components/WhyPartner';
 	</head>
 
 	<body>
+		<!-- <ThemeProvider></ThemeProvider> engloba todo el contenido -->
+		<Toaster client:load/>
 		<div class="min-h-screen">
 			<Header client:load/>
 			<main>

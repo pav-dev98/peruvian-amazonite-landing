@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
@@ -11,9 +13,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// import { useToast } from "@/hooks/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { toast } from "sonner"
 import { Send, Phone, Mail, Clock } from "lucide-react";
+import CardQuote from "./CardQuote";
 
 const countries = [
   "Afghanistan", "Albania", "Algeria", "Argentina", "Australia", "Austria",
@@ -48,33 +58,72 @@ const intendedUses = [
   "Other"
 ];
 
+const quotes = [
+  {
+    title: "Email Us",
+    description: "sales@peruvian-amazonite.com",
+    icon: Mail,
+    type: "primary"
+  },
+  {
+    title: "Call Us",
+    description: "+51 999 888 777",
+    icon: Phone,
+    type: "primary"
+  },
+  {
+    title: "Response Time",
+    description: "Within 24 business hours",
+    icon: Clock,
+    type: "accent"
+  }
+]
+
+const formSchema = z.object({
+  fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
+  companyName: z.string().min(2, { message: "Company name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().optional(),
+  country: z.string({ required_error: "Please select a country." }),
+  volume: z.string({ required_error: "Please select a volume range." }),
+  intendedUse: z.string({ required_error: "Please select an intended use." }),
+  grades: z.array(z.string()).refine((value) => value.length > 0, {
+    message: "You must select at least one grade.",
+  }),
+  message: z.string().optional(),
+});
+
 const ContactForm = () => {
-//   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [selectedGrades, setSelectedGrades] = useState<string[]>([]);
 
-  const handleGradeToggle = (grade: string) => {
-    setSelectedGrades(prev =>
-      prev.includes(grade)
-        ? prev.filter(g => g !== grade)
-        : [...prev, grade]
-    );
-  };
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: "",
+      companyName: "",
+      email: "",
+      phone: "",
+      grades: [],
+      message: "",
+    },
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log("Form Values:", values);
     setIsSubmitting(true);
 
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    toast("Quote Request Received!",{
+    console.log("Form Values:", values);
+
+    toast("Quote Request Received!", {
       description: "Our sales team will contact you within 24 hours.",
+      duration: Infinity,
     });
 
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
-    setSelectedGrades([]);
+    form.reset();
   };
 
   return (
@@ -90,211 +139,261 @@ const ContactForm = () => {
               Request a Bulk Quotation Today
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Complete the form and our dedicated sales team will contact you within 
+              Complete the form and our dedicated sales team will contact you within
               24 hours with a customized quote based on your requirements.
             </p>
 
             {/* Contact Info Cards */}
             <div className="space-y-4">
-              <div className="bg-muted rounded-xl p-5 flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">Email Us</p>
-                  <p className="text-muted-foreground text-sm">sales@peruvian-amazonite.com</p>
-                </div>
-              </div>
-
-              <div className="bg-muted rounded-xl p-5 flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-5 h-5 text-primary-foreground" />
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">Call Us</p>
-                  <p className="text-muted-foreground text-sm">+51 999 888 777</p>
-                </div>
-              </div>
-
-              <div className="bg-muted rounded-xl p-5 flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-accent-foreground" />
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">Response Time</p>
-                  <p className="text-muted-foreground text-sm">Within 24 business hours</p>
-                </div>
-              </div>
+              {quotes.map((quote,index)=>{
+                return (<CardQuote key={index} title={quote.title} description={quote.description} icon={quote.icon} type={quote.type} />)
+              })}
             </div>
           </div>
 
           {/* Right Side - Form */}
           <div className="lg:col-span-3">
-            <form 
-              onSubmit={handleSubmit}
-              className="bg-card rounded-2xl p-8 shadow-card border border-border"
-            >
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Full Name */}
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">Full Name *</Label>
-                  <Input
-                    id="fullName"
-                    name="fullName"
-                    placeholder="John Smith"
-                    required
-                    className="h-12"
-                  />
-                </div>
+            <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Full Name */}
+                    <FormField
+                      control={form.control}
+                      name="fullName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="John Smith" className="h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Company Name */}
-                <div className="space-y-2">
-                  <Label htmlFor="companyName">Company Name *</Label>
-                  <Input
-                    id="companyName"
-                    name="companyName"
-                    placeholder="Smith Minerals Ltd."
-                    required
-                    className="h-12"
-                  />
-                </div>
+                    {/* Company Name */}
+                    <FormField
+                      control={form.control}
+                      name="companyName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Smith Minerals Ltd." className="h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Email */}
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="john@company.com"
-                    required
-                    className="h-12"
-                  />
-                </div>
+                    {/* Email */}
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address *</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="john@company.com" className="h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Phone */}
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="+1 (555) 123-4567"
-                    className="h-12"
-                  />
-                </div>
+                    {/* Phone */}
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number</FormLabel>
+                          <FormControl>
+                            <Input type="tel" placeholder="+1 (555) 123-4567" className="h-12" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Country */}
-                <div className="space-y-2">
-                  <Label>Country *</Label>
-                  <Select name="country" required>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Select your country" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {countries.map((country) => (
-                        <SelectItem key={country} value={country.toLowerCase()}>
-                          {country}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                    {/* Country */}
+                    <FormField
+                      control={form.control}
+                      name="country"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Country *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select your country" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {countries.map((country) => (
+                                <SelectItem key={country} value={country.toLowerCase()}>
+                                  {country}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Volume */}
-                <div className="space-y-2">
-                  <Label>Estimated Monthly Volume *</Label>
-                  <Select name="volume" required>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Select volume range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {volumeRanges.map((range) => (
-                        <SelectItem key={range} value={range.toLowerCase()}>
-                          {range}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                    {/* Volume */}
+                    <FormField
+                      control={form.control}
+                      name="volume"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Estimated Monthly Volume *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select volume range" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {volumeRanges.map((range) => (
+                                <SelectItem key={range} value={range.toLowerCase()}>
+                                  {range}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Intended Use */}
-                <div className="space-y-2">
-                  <Label>Intended Use *</Label>
-                  <Select name="intendedUse" required>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Select intended use" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {intendedUses.map((use) => (
-                        <SelectItem key={use} value={use.toLowerCase()}>
-                          {use}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                    {/* Intended Use */}
+                    <FormField
+                      control={form.control}
+                      name="intendedUse"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Intended Use *</FormLabel>
+                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                              <SelectTrigger className="h-12">
+                                <SelectValue placeholder="Select intended use" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {intendedUses.map((use) => (
+                                <SelectItem key={use} value={use.toLowerCase()}>
+                                  {use}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {/* Grades - Checkboxes */}
-                <div className="space-y-2">
-                  <Label>Interested Grade(s) *</Label>
-                  <div className="flex flex-wrap gap-4 pt-2">
-                    {["AAA", "AA", "A", "Mixed"].map((grade) => (
-                      <div key={grade} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`grade-${grade}`}
-                          checked={selectedGrades.includes(grade)}
-                          onCheckedChange={() => handleGradeToggle(grade)}
-                        />
-                        <Label
-                          htmlFor={`grade-${grade}`}
-                          className="text-sm font-normal cursor-pointer"
-                        >
-                          {grade}
-                        </Label>
-                      </div>
-                    ))}
+                    {/* Grades - Checkboxes */}
+                    <FormField
+                      control={form.control}
+                      name="grades"
+                      render={() => (
+                        <FormItem>
+                          <div className="mb-4">
+                            <FormLabel className="text-base">Interested Grade(s) *</FormLabel>
+                          </div>
+                          <div className="flex flex-wrap gap-4">
+                            {["AAA", "AA", "A", "Mixed"].map((grade) => (
+                              <FormField
+                                key={grade}
+                                control={form.control}
+                                name="grades"
+                                render={({ field }) => {
+                                  return (
+                                    <FormItem
+                                      key={grade}
+                                      className="flex flex-row items-start space-x-3 space-y-0"
+                                    >
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(grade)}
+                                          onCheckedChange={(checked) => {
+                                            return checked
+                                              ? field.onChange([...field.value, grade])
+                                              : field.onChange(
+                                                field.value?.filter(
+                                                  (value) => value !== grade
+                                                )
+                                              )
+                                          }}
+                                        />
+                                      </FormControl>
+                                      <FormLabel className="font-normal cursor-pointer">
+                                        {grade}
+                                      </FormLabel>
+                                    </FormItem>
+                                  )
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    {/* Message */}
+                    <div className="md:col-span-2">
+                      <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Message / Specific Requirements</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Tell us about your specific requirements, preferred shipping terms, or any questions..."
+                                className="resize-none"
+                                rows={4}
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                {/* Message */}
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="message">Message / Specific Requirements</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell us about your specific requirements, preferred shipping terms, or any questions..."
-                    rows={4}
-                    className="resize-none"
-                  />
-                </div>
-              </div>
+                  {/* Submit Button */}
+                  <Button
+                    type="submit"
+                    variant="hero"
+                    size="lg"
+                    className="w-full mt-8"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <Send className="w-4 h-4" />
+                        Contact Our Sales Director
+                      </span>
+                    )}
+                  </Button>
 
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                variant="ghost"
-                size="lg"
-                className="w-full mt-8"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <Send className="w-4 h-4" />
-                    Contact Our Sales Director
-                  </span>
-                )}
-              </Button>
-
-              <p className="text-center text-sm text-muted-foreground mt-4">
-                By submitting, you agree to our privacy policy.
-              </p>
-            </form>
+                  <p className="text-center text-sm text-muted-foreground mt-4">
+                    By submitting, you agree to our privacy policy.
+                  </p>
+                </form>
+              </Form>
+            </div>
           </div>
         </div>
       </div>
