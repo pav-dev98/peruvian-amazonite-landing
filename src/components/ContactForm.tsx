@@ -25,20 +25,7 @@ import { toast } from "sonner"
 import { Send, Phone, Mail, Clock } from "lucide-react";
 import CardQuote from "./CardQuote";
 import type { CardQuoteProps } from "./CardQuote";
-
-const countries = [
-  "Afghanistan", "Albania", "Algeria", "Argentina", "Australia", "Austria",
-  "Bangladesh", "Belgium", "Brazil", "Canada", "Chile", "China", "Colombia",
-  "Czech Republic", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece",
-  "Hong Kong", "Hungary", "India", "Indonesia", "Iran", "Iraq", "Ireland",
-  "Israel", "Italy", "Japan", "Jordan", "Kenya", "Malaysia", "Mexico",
-  "Morocco", "Nepal", "Netherlands", "New Zealand", "Nigeria", "Norway",
-  "Pakistan", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
-  "Romania", "Russia", "Saudi Arabia", "Singapore", "South Africa",
-  "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Taiwan",
-  "Thailand", "Turkey", "UAE", "Ukraine", "United Kingdom", "United States",
-  "Vietnam", "Other"
-];
+import countries from "../data/countries.json";
 
 const volumeRanges = [
   "< 500 kg",
@@ -233,8 +220,8 @@ const ContactForm = () => {
                             </FormControl>
                             <SelectContent>
                               {countries.map((country) => (
-                                <SelectItem key={country} value={country.toLowerCase()}>
-                                  {country}
+                                <SelectItem key={country.name} value={country.name.toLowerCase()}>
+                                  {country.name}
                                 </SelectItem>
                               ))}
                             </SelectContent>
