@@ -1,6 +1,6 @@
 import { Check, Star, Sparkles, Package } from "lucide-react";
-import gradeAAA from "../assets/grade-aaa.jpg";
-import gradeAA from "../assets/grade-aa.jpg";
+import gradeAAA from "../assets/grade-aaa1.png";
+import gradeAA from "../assets/grade-aa1.png";
 import gradeA from "../assets/grade-a.jpg";
 
 interface GradeCardProps {

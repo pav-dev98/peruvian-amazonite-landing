@@ -1,5 +1,6 @@
 import { MapPin, Activity, Users, Shield } from "lucide-react";
-import andesImage from "../assets/andes-landscape.jpg";
+import andesImage from "../assets/andes-landscape2.png";
+
 
 const AboutMine = () => {
   const stats = [
