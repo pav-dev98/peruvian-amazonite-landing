@@ -26,6 +26,7 @@ import { Send, Phone, Mail, Clock } from "lucide-react";
 import CardQuote from "./CardQuote";
 import type { CardQuoteProps } from "./CardQuote";
 import countries from "../data/countries.json";
+import { actions } from "astro:actions";
 
 const volumeRanges = [
   "< 500 kg",
@@ -75,7 +76,7 @@ const formSchema = z.object({
   country: z.string({ required_error: "Please select a country." }),
   volume: z.string({ required_error: "Please select a volume range." }),
   intendedUse: z.string({ required_error: "Please select an intended use." }),
-  grades: z.array(z.string()).refine((value) => value.length > 0, {
+  interestedGrades: z.array(z.string()).refine((value) => value.length > 0, {
     message: "You must select at least one grade.",
   }),
   message: z.string().optional(),
@@ -91,23 +92,25 @@ const ContactForm = () => {
       companyName: "",
       email: "",
       phone: "",
-      grades: [],
+      interestedGrades: [],
       message: "",
     },
   });
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log("Form Values:", values);
     setIsSubmitting(true);
+    const {data, error} = await actions.insertLead(values);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    console.log("Form Values:", values);
+    if(error){
+      toast("Error!", {
+        description: "Please try again later.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
 
     toast("Quote Request Received!", {
       description: "Our sales team will contact you within 24 hours.",
-      duration: Infinity,
     });
 
     setIsSubmitting(false);
@@ -133,7 +136,7 @@ const ContactForm = () => {
 
             {/* Contact Info Cards */}
             <div className="space-y-4">
-              {quotes.map((quote,index)=>{
+              {quotes.map((quote, index) => {
                 return (<CardQuote key={index} title={quote.title} description={quote.description} icon={quote.icon} variant={quote.variant} />)
               })}
             </div>
@@ -286,7 +289,7 @@ const ContactForm = () => {
                     {/* Grades - Checkboxes */}
                     <FormField
                       control={form.control}
-                      name="grades"
+                      name="interestedGrades"
                       render={() => (
                         <FormItem>
                           <div className="mb-4">
@@ -297,7 +300,7 @@ const ContactForm = () => {
                               <FormField
                                 key={grade}
                                 control={form.control}
-                                name="grades"
+                                name="interestedGrades"
                                 render={({ field }) => {
                                   return (
                                     <FormItem
@@ -308,13 +311,14 @@ const ContactForm = () => {
                                         <Checkbox
                                           checked={field.value?.includes(grade)}
                                           onCheckedChange={(checked) => {
-                                            return checked
-                                              ? field.onChange([...field.value, grade])
-                                              : field.onChange(
-                                                field.value?.filter(
-                                                  (value) => value !== grade
-                                                )
-                                              )
+                                            if (checked) {
+                                              if (grade !== "Mixed") {
+                                                let filterMixes = field.value.filter((item) => item !== "Mixed")
+                                                return field.onChange([...filterMixes, grade])
+                                              }
+                                              return field.onChange(["Mixed"])
+                                            }
+                                            return field.onChange(field.value?.filter((value) => value !== grade))
                                           }}
                                         />
                                       </FormControl>
