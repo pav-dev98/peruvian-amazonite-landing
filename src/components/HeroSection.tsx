@@ -14,11 +14,16 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage.src}
-          alt="Peruvian Amazonite Mine"
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          preload="auto"
           className="w-full h-full object-cover"
-        />
+        >
+          <source src="/videos/rock.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-dark/80 via-slate-dark/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-dark/70 via-transparent to-slate-dark/30" />
       </div>
