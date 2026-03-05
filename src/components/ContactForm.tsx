@@ -364,7 +364,7 @@ const ContactForm = () => {
                     type="submit"
                     variant="hero"
                     size="lg"
-                    className="w-full mt-8"
+                    className="w-full mt-8 whitespace-normal"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
