@@ -53,7 +53,7 @@ const WhyPartner = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="why-partner" className="py-20 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">

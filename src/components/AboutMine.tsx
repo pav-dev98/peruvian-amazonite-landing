@@ -11,7 +11,7 @@ const AboutMine = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted mineral-texture overflow-hidden">
+    <section id="about" className="py-20 bg-muted mineral-texture overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image Side */}
