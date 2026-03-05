@@ -13,9 +13,9 @@ const TrustBar = () => {
   return (
     <section className="bg-primary py-6 border-y border-primary/20">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Export Regions */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center gap-4 md:flex-row">
             <Globe className="w-5 h-5 text-primary-foreground/80" />
             <span className="text-primary-foreground/80 text-sm font-medium">
               Exporting to:

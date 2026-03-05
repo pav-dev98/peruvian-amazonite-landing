@@ -15,7 +15,7 @@ const Footer = () => {
                 <Mountain className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-serif text-xl font-bold">Peruvian Amazonite</h3>
+                <h3 className="font-serif text-xl font-bold">Blue Peruvian Amazonite</h3>
                 <p className="text-primary-foreground/60 text-sm">Direct Mine Export</p>
               </div>
             </div>

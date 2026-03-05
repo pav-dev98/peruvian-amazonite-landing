@@ -374,7 +374,7 @@ const ContactForm = () => {
                       </span>
                     ) : (
                       <span className="flex items-center gap-2">
-                        <Send className="w-4 h-4" />
+                        <Send className="w-4 h-4 hidden sm:block" />
                         Contact Our Sales Director
                       </span>
                     )}
