@@ -50,7 +50,7 @@ const Header = () => {
             <div>
               <span className={`font-serif font-bold text-lg transition-colors ${isScrolled ? "text-foreground" : "text-primary-foreground"
                 }`}>
-                Blue Peruvian Amazonite.
+                Blue Amazonite Peru.
               </span>
             </div>
           </a>
