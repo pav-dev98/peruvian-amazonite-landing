@@ -50,13 +50,13 @@ const intendedUses = [
 const quotes: Array<CardQuoteProps> = [
   {
     title: "Email Us",
-    description: "sales@peruvian-amazonite.com",
+    description: "blueamazoniteperu@gmail.com",
     icon: Mail,
     variant: "primary"
   },
   {
     title: "Call Us",
-    description: "+51 999 888 777",
+    description: "+56 928260797",
     icon: Phone,
     variant: "primary"
   },
