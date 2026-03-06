@@ -15,7 +15,7 @@ const Footer = () => {
                 <Mountain className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h3 className="font-serif text-xl font-bold">Blue Peruvian Amazonite</h3>
+                <h3 className="font-serif text-xl font-bold">Blue Amazonite Peru</h3>
                 <p className="text-primary-foreground/60 text-sm">Direct Mine Export</p>
               </div>
             </div>
@@ -34,7 +34,8 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/blueamazoniteperu/"
+                target="_blank"
                 className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
                 aria-label="Instagram"
               >
@@ -78,15 +79,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-accent mt-0.5" />
-                <span className="text-primary-foreground/70">sales@peruvian-amazonite.com</span>
+                <span className="text-primary-foreground/70">blueamazoniteperu@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-accent mt-0.5" />
-                <span className="text-primary-foreground/70">+51 999 888 777</span>
+                <span className="text-primary-foreground/70">+56 928260797</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent mt-0.5" />
-                <span className="text-primary-foreground/70">Amazonas Region, Peru</span>
+                <span className="text-primary-foreground/70">Santiago, Chile</span>
               </li>
             </ul>
           </div>

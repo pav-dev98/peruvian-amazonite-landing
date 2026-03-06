@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "51999888777"; // Peru country code + number
+  const phoneNumber = "+56 928260797"; // Chile country code + number
   const message = encodeURIComponent(
     "Hello! I'm interested in purchasing wholesale Amazonite. Can you provide more information?"
   );
