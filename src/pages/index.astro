@@ -1,17 +1,17 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 // Component Imports
-import AboutMine from '../components/AboutMine';
-import ContactForm from '../components/ContactForm';
-import HeroSection from '../components/HeroSection'
-import Header from '../components/Header';
-import TrustBar from '../components/TrustBar';
-import ProductGrading from '../components/ProductGrading';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import WhyPartner from '@/components/WhyPartner';
-import { Toaster } from '@/components/ui/sonner';
-import { ThemeProvider } from '@/components/ThemeProvider';
+import AboutMine from "../components/AboutMine";
+import ContactForm from "../components/ContactForm";
+import HeroSection from "../components/HeroSection";
+import Header from "../components/Header";
+import TrustBar from "../components/TrustBar";
+import ProductGrading from "../components/ProductGrading";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import WhyPartner from "@/components/WhyPartner";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -23,39 +23,44 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/logo-f.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Wholesale Amazonite Supplier - Direct Peruvian Mine Export</title>
+		<title>
+			Wholesale Amazonite Supplier - Direct Peruvian Source Export
+		</title>
 		<meta
-          name="description"
-          content="Source high-quality Peruvian Amazonite in bulk. Direct from mine owner, ethical sourcing, and global logistics. Request a quote for your wholesale needs."
-        />
-        <meta
-          name="keywords"
-          content="amazonite, wholesale amazonite, peruvian amazonite, amazonite supplier, bulk amazonite, amazonite rough, amazonite export"
-        />
-        <meta property="og:title" content="Premium Peruvian Amazonite - Direct from Mine to Global Markets" />
-        <meta
-          property="og:description"
-          content="We own the source. High-quality Amazonite rough and semi-polished stones, ethically mined in Peru and exported worldwide."
-        />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://peruvian-amazonite.com" />
+			name="description"
+			content="Source high-quality Peruvian Amazonite in bulk. Direct access to certified mines in the Amazonas region. Ethical sourcing, expert grading, and global logistics. Request a wholesale quote."
+		/>
+		<meta
+			name="keywords"
+			content="amazonite wholesale, peruvian amazonite supplier, bulk amazonite, amazonite rough stones, amazonite exporter, amazonite wholesale supplier"
+		/>
+		<meta
+			property="og:title"
+			content="Premium Peruvian Amazonite - Direct Source to Global Markets"
+		/>
+		<meta
+			property="og:description"
+			content="Exclusive access to premium Peruvian Amazonite from certified mines in the Amazonas region. Ethically sourced, expertly graded, and shipped worldwide."
+		/>
+		<meta property="og:type" content="website" />
+		<link rel="canonical" href="https://wholesale.blueamazoniteperu.com" />
 	</head>
 
 	<body>
 		<!-- <ThemeProvider></ThemeProvider> engloba todo el contenido -->
-		<Toaster client:load/>
+		<Toaster client:load />
 		<div class="min-h-screen">
-			<Header client:load/>
+			<Header client:load />
 			<main>
-          		<HeroSection client:load/>
-          		<TrustBar />
-          		<ProductGrading />
-          		<WhyPartner />
-          		<AboutMine />
-          		<ContactForm client:load/>
-        	</main>
+				<HeroSection client:load />
+				<TrustBar />
+				<ProductGrading />
+				<WhyPartner />
+				<AboutMine />
+				<ContactForm client:load />
+			</main>
 			<Footer />
-        	<WhatsAppButton />
+			<WhatsAppButton />
 		</div>
 	</body>
 </html>
