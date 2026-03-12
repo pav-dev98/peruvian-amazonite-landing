@@ -52,15 +52,10 @@ const AboutMine = () => {
               From the Heart of the Peruvian Andes
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Our dedicated mine produces some of the most sought-after Amazonite in the world. 
-              As a tech-driven mining operation, we combine traditional extraction methods with 
-              rigorous quality control to ensure every ton meets the highest international 
-              standards for color, clarity, and consistency.
+              We are a Peruvian export operation with exclusive access to some of the most sought-after Amazonite in the world. By working directly at the source, we oversee quality from extraction to shipment — ensuring every ton meets the highest international standards for color, clarity, and consistency.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Located in the mineral-rich Amazonas region of Peru, our deposits are renowned 
-              for producing amazonite with exceptional saturation and the distinctive 
-              "Tiffany-blue" coloration that collectors and manufacturers prize worldwide.
+              Sourced from the mineral-rich Amazonas region of Peru, our Amazonite is renowned for exceptional color saturation and the distinctive "Tiffany-blue" coloration that collectors and manufacturers prize worldwide.
             </p>
 
             {/* Stats Grid */}

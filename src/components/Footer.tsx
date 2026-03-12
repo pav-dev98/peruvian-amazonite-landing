@@ -16,12 +16,11 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold">Blue Amazonite Peru</h3>
-                <p className="text-primary-foreground/60 text-sm">Direct Mine Export</p>
+                <p className="text-primary-foreground/60 text-sm">Direct Source Export</p>
               </div>
             </div>
             <p className="text-primary-foreground/70 leading-relaxed max-w-md mb-6">
-              Premium Peruvian Amazonite sourced directly from our own mine in the 
-              Amazonas region. Ethically mined, expertly graded, and shipped worldwide.
+              Premium Peruvian Amazonite sourced directly from certified mines in the Amazonas region. Ethically sourced, expertly graded, and shipped worldwide.
             </p>
             <div className="flex gap-4">
               <a

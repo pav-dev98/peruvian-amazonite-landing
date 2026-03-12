@@ -28,9 +28,9 @@ const WhyPartner = () => {
   const advantages = [
     {
       icon: <Mountain className="w-6 h-6" />,
-      title: "Direct Mine Ownership",
+      title: "Direct Source Access",
       description:
-        "No middlemen. You are dealing directly with the concession owner in Peru, ensuring the best possible price and provenance.",
+        "No middlemen. We work exclusively with certified Peruvian mines under long-term supply agreements, giving you first-hand pricing and full traceability.",
     },
     {
       icon: <Leaf className="w-6 h-6" />,

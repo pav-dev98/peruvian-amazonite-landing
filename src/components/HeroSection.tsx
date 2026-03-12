@@ -30,26 +30,24 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12 py-20">
-        <div className="max-w-3xl animate-fade-up">
+        <div className="max-w-4xl animate-fade-up">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-2 mb-6">
             <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
             <span className="text-primary-foreground/90 text-sm font-medium tracking-wide">
-              Direct Mine-to-Market Supply
+              Direct Source-to-Market Supply
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl 2xl:text-6xl font-serif font-bold text-primary-foreground leading-tight mb-6">
             Peruvian Amazonite
-            <span className="block text-accent mt-2">Direct from Mine to Global Markets</span>
+            <span className="block text-accent mt-2">Direct from Source to Global Markets</span>
           </h1>
 
           {/* Sub-headline */}
           <p className="text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 max-w-2xl">
-            We own the source. High-quality Amazonite rough and semi-polished stones, 
-            ethically mined in Peru and exported worldwide. Scale your production with 
-            a reliable, first-hand supplier.
+            Exclusive access to premium Peruvian Amazonite, sourced directly from certified mines in the Amazonas region. Scale your production with a trusted, first-hand exporter.
           </p>
 
           {/* CTA Buttons */}
@@ -75,11 +73,11 @@ const HeroSection = () => {
           <div className="flex items-center gap-6 mt-10 pt-6 border-t border-primary-foreground/20">
             <div className="text-center">
               <p className="text-2xl font-bold text-accent">100%</p>
-              <p className="text-sm text-primary-foreground/70">Mine-to-Market</p>
+              <p className="text-sm text-primary-foreground/70">Source-to-Market</p>
             </div>
             <div className="w-px h-12 bg-primary-foreground/20" />
             <div className="text-center">
-              <p className="text-2xl font-bold text-accent">50+</p>
+              <p className="text-2xl font-bold text-accent">40+</p>
               <p className="text-sm text-primary-foreground/70">Tons Annually</p>
             </div>
             <div className="w-px h-12 bg-primary-foreground/20" />
