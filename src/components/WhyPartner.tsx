@@ -61,7 +61,7 @@ const WhyPartner = () => {
             Why Choose Us
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
-            The Advantage of Direct Sourcing
+            The Advantage of a Direct Peruvian Amazonite Supplier
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Partner directly with the source for unmatched quality, pricing, and reliability.

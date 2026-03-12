@@ -49,10 +49,10 @@ const AboutMine = () => {
               Our Story
             </span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-3 mb-6">
-              From the Heart of the Peruvian Andes
+              Bulk Amazonite Rough Stones — Sourced from the Peruvian Andes
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              We are a Peruvian export operation with exclusive access to some of the most sought-after Amazonite in the world. By working directly at the source, we oversee quality from extraction to shipment — ensuring every ton meets the highest international standards for color, clarity, and consistency.
+              We are a Peruvian amazonite wholesale operation with exclusive access to some of the most sought-after Amazonite in the world. By working directly at the source, we oversee quality from extraction to shipment — ensuring every ton meets the highest international standards for color, clarity, and consistency.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Sourced from the mineral-rich Amazonas region of Peru, our Amazonite is renowned for exceptional color saturation and the distinctive "Tiffany-blue" coloration that collectors and manufacturers prize worldwide.

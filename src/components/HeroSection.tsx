@@ -41,8 +41,8 @@ const HeroSection = () => {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-5xl 2xl:text-6xl font-serif font-bold text-primary-foreground leading-tight mb-6">
-            Peruvian Amazonite
-            <span className="block text-accent mt-2">Direct from Source to Global Markets</span>
+            Peruvian Amazonite Wholesale
+            <span className="block text-accent mt-2">Direct Source Supplier to Global Markets</span>
           </h1>
 
           {/* Sub-headline */}
