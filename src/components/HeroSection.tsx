@@ -21,6 +21,7 @@ const HeroSection = () => {
           playsInline 
           preload="auto"
           className="w-full h-full object-cover"
+          poster="/videos/poster.jpg"
         >
           <source src="/videos/rock.mp4" type="video/mp4" />
         </video>
