@@ -91,6 +91,9 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
+          <h5 className="text-primary-foreground/70 text-sm">Jesus said to him, “I am the way, and the truth, and the life. No one comes to the Father except through me" (John 14:6)</h5>
+        </div>
       </div>
 
       {/* Bottom Bar */}
